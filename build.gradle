@@ -3,8 +3,11 @@ plugins {
     id 'maven-publish'
 }
 
+ext {
+    baseSnapshotVersion = '0.0.1'
+}
 group = 'com.couponpop'
-version = '0.0.1-SNAPSHOT'
+version = project.findProperty('version') ?: '0.0.0'
 description = 'couponpop-core-module'
 
 java {
