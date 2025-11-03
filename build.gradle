@@ -38,10 +38,16 @@ publishing {
     publications {
         'couponpopcoremodule' (MavenPublication) {
             groupId = group
-            artifactId = "couponpopcoremodule"
+            artifactId = "couponpop-core"
             version = version
 
             from components.java
+
+            pom {
+                name.set("CouponPop Core Module")
+                description.set("Common core utilities for CouponPop microservices")
+                url.set("https://github.com/CouponPop/couponpop-core-module")
+            }
         }
     }
     repositories {
@@ -58,4 +64,16 @@ publishing {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Manifest-Version': '1.0',
+                'Implementation-Title': 'CouponPop Core Module',
+                'Implementation-Version': version,
+                'Implementation-Vendor': 'CouponPop Team',
+                'Automatic-Module-Name': 'com.couponpop.core'
+        )
+    }
 }
