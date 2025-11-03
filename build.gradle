@@ -15,6 +15,10 @@ java {
     targetCompatibility = '17'
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -39,13 +43,11 @@ dependencies {
 
 publishing {
     publications {
-        'couponpopcoremodule' (MavenPublication) {
+        mavenJava(MavenPublication) {
             groupId = group
             artifactId = "couponpop-core"
             version = version
-
             from components.java
-
             pom {
                 name.set("CouponPop Core Module")
                 description.set("Common core utilities for CouponPop microservices")
@@ -78,5 +80,20 @@ jar {
                 'Implementation-Vendor': 'CouponPop Team',
                 'Automatic-Module-Name': 'com.couponpop.core'
         )
+    }
+}
+
+tasks.withType(PublishToMavenRepository).configureEach {
+    if (System.getenv("GITHUB_ACTIONS") == "true") {
+        repository.credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+tasks.register('printBaseSnapshotVersion') {
+    doLast {
+        println project.ext.baseSnapshotVersion
     }
 }
