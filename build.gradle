@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-    baseSnapshotVersion = '0.0.2'
+    baseSnapshotVersion = '0.0.3'
     lombokVersion = '1.18.40'
 }
 group = 'com.couponpop'
@@ -31,6 +31,8 @@ repositories {
 }
 
 dependencies {
+    // [Jackson]
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
 
     // [Compile & Runtime & Test]
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
