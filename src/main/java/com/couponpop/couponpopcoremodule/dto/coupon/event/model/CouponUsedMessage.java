@@ -9,7 +9,7 @@ public record CouponUsedMessage(
         String storeName,
         Long eventId,
         String eventName,
-        CouponMessageType couponStatus
+        CouponMessageType messageType
 ) {
     public static CouponUsedMessage of(Long couponId, Long memberId, Long storeId, String storeName, Long eventId, String eventName, CouponMessageType messageType) {
         return new CouponUsedMessage(
