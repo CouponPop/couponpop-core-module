@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-    baseSnapshotVersion = '0.0.16'
+    baseSnapshotVersion = '0.0.17'
     lombokVersion = '1.18.40'
 }
 group = 'com.couponpop'
