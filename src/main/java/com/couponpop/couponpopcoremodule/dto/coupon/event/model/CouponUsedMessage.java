@@ -15,7 +15,7 @@ public record CouponUsedMessage(
         String eventName,
         CouponMessageType messageType,
         LocalDateTime occurredAt
-) {
+) implements CouponFcmMessage {
 
     public static CouponUsedMessage of(String traceId, String token, Long couponId, Long memberId, Long storeId, String storeName, Long eventId, String eventName, CouponMessageType messageType, LocalDateTime occurredAt) {
         return new CouponUsedMessage(traceId, token, couponId, memberId, storeId, eventId, storeName, eventName, messageType, occurredAt);
